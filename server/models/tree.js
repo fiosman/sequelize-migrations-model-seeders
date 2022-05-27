@@ -1,7 +1,5 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
+"use strict";
+const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class Tree extends Model {
     /**
@@ -12,15 +10,24 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
     }
-  };
-  Tree.init({
-    tree: DataTypes.STRING,
-    location: DataTypes.STRING,
-    height_ft: DataTypes.FLOAT,
-    ground_circumference_ft: DataTypes.FLOAT
-  }, {
-    sequelize,
-    modelName: 'Tree',
-  });
+  }
+  Tree.init(
+    {
+      tree: DataTypes.STRING,
+      location: DataTypes.STRING,
+      height_ft: {
+        type: DataTypes.FLOAT,
+        min: 0,
+      },
+      ground_circumference_ft: {
+        type: DataTypes.FLOAT,
+        min: 0,
+      },
+    },
+    {
+      sequelize,
+      modelName: "Tree",
+    }
+  );
   return Tree;
 };
