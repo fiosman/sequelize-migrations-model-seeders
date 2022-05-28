@@ -13,8 +13,15 @@ module.exports = (sequelize, DataTypes) => {
   }
   Tree.init(
     {
-      tree: DataTypes.STRING,
-      location: DataTypes.STRING,
+      tree: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        unique: true,
+      },
+      location: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
       height_ft: {
         type: DataTypes.FLOAT,
         min: 0,
