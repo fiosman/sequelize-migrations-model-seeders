@@ -20,7 +20,6 @@ module.exports = (sequelize, DataTypes) => {
       },
       location: {
         type: DataTypes.STRING,
-        allowNull: false,
       },
       height_ft: {
         type: DataTypes.FLOAT,

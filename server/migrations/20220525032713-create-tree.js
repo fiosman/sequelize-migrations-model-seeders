@@ -15,7 +15,6 @@ module.exports = {
       },
       location: {
         type: Sequelize.STRING,
-        allowNull: false,
       },
       height_ft: {
         type: Sequelize.FLOAT,
