@@ -17,6 +17,9 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
         unique: true,
+        validate: {
+          isUppercase: { msg: "Name must be uppercase" },
+        },
       },
       description: DataTypes.STRING,
       territory: DataTypes.STRING,
