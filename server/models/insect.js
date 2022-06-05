@@ -18,7 +18,12 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         unique: true,
         validate: {
-          isUppercase: { msg: "Name must be uppercase" },
+          isTitleCased(val) {
+            const allWords = val.split(" ").filter((word) => word !== "");
+            const isAnyWordLowerCase = allWords.find((word) => word === word.toLowerCase());
+
+            if (isAnyWordLowerCase.length > 0) throw new Error("Each word must be capitalized!");
+          },
         },
       },
       description: DataTypes.STRING,
